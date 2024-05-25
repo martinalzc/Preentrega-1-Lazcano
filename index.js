@@ -1,16 +1,26 @@
-// FUNCION para que el ordenador elija su jugada aletoriamente
-function aleatorio(min, max){
-    return Math.round(Math.random() * (max-min));
-}
-
-// FUNCION para guardar el puntaje
-
-// FUNCION de el juego completo
+// JUEGO PIEDRA, PAPEL, TIJERAS CONTRA EL ORDENADOR
 
 
 // Variables
-let terminarPartida
+let terminarPartida;
 let partidaUser;
+let puntosOrdenador = 0;
+let puntosUsuario = 0;
+let punto;
+
+
+// FUNCIONES
+
+// FUNCION para que el ordenador elija su jugada aletoriamente
+function aleatorio(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+
+// FUNCION para guardar el puntaje
+function puntaje(usuario,ordenador){
+    alert(`*Puntaje del oponente: ${ordenador} \n*Tu puntaje: ${usuario}`)
+}
 
 
 // Inicio del juego
@@ -18,53 +28,85 @@ prompt('Juego "piedra, papel, tijeras"  \n Reglas: \n 1. El papel envuelve a la 
 
 
 // Estructura while, que mientras el jugador quiera continuar jugando se seguira repitiendo
-while (terminarPartida = "si"){
+do{
     partidaUser = prompt("Elije tu jugada: \n Piredra \n Papel \n Tijera")
 
+
     //Llamado a la funcion para que el ordenador elija su jugada de forma aleatoria
-    aleatorio(1,3);
+    partidaOrdenador = aleatorio(0,2);
     
 
     //Sentencia switch para que el juego reaccione dependiendo de la jugada del usuario
     switch (partidaUser){
-        case partidaUser = "piedra":
-            if (partidaOrdenador = 0){
-                result = alert("Yo piedra tambien!");
-                punto = alert("Empate :)")
-            } else if (partidaOrdenador = 1){
-                result = alert("Yo tijeras.");
-                punto = alert("Me ganaste! :(");
-            } else if (partidaOrdenador = 2) {
-                result = alert("Yo papel.");
-                punto = alert("Te gane! :)")
+        case "piedra":
+            if (partidaOrdenador === 0){
+                alert("Yo elegi piedra tambien!. Empate :)");
+            } else if (partidaOrdenador === 1){
+                puntosUsuario++;
+                alert("Yo elegi tijeras. Me ganaste! :(");
+            } else{
+                puntosOrdenador++;
+                alert("Yo elegi papel. Te gane! :)");
             } 
-            break
-        case partidaUser = "tijera":
-            if (partidaOrdenador = 0){
-                result = alert("Yo piedra, te gane! :)");
-            } else if (partidaOrdenador = 1){
-                result = alert("Yo tijeras tambien!. Empate :)");
-            } else if (partidaOrdenador = 2) {
-                result = alert("Yo papel, me ganaste! :(");
+            break;
+        case "tijera":
+            if (partidaOrdenador === 0){
+                puntosOrdenador++;
+                alert("Yo piedra. Te gane! :)");
+            } else if (partidaOrdenador === 1){
+                alert("Yo tijeras tambien!. Empate :)");
+            } else{
+                puntosUsuario++;
+                alert("Yo papel. Me ganaste! :(");
             }
-            break
-        case partidaUser = "papel":
-            if (partidaOrdenador = 0){
-                result = alert("Yo piedra, me ganaste! :(");
-            } else if (partidaOrdenador = 1){
-                result = alert("Yo tijeras, te gane! :)");
-            } else if (partidaOrdenador = 2) {
-                result = alert("Yo papel tambien!. Empate :)");
+            break;
+        case "papel":
+            if (partidaOrdenador === 0){
+                puntosUsuario++;
+                alert("Yo piedra. Me ganaste! :(");
+            } else if (partidaOrdenador === 1){
+                puntosOrdenador++;
+                alert("Yo tijeras. Te gane! :)");
+            } else{
+                alert("Yo papel tambien!. Empate :)");
             }
-            break
+            break;
+        default:
+            alert("Introduzca una jugada valida");
+            continue;
     }
+    
+
+    //Llamado a la funcion que almacena los puntajes
+    puntaje(puntosUsuario, puntosOrdenador);
 
 
     //Pregunta que determina si el ciclo se sigue repitiendo o si el juego finaliza
-    prompt(terminarPartida = "Quieres jugar otra ronda? \n -Si \n -No")
+    terminarPartida = prompt("Quieres jugar otra ronda? \n- Si \n- No");
+
+
+    //Pregunta que determina si el ciclo se sigue repitiendo o si el juego finaliza
+} while (terminarPartida !== "no")
+
+
+
+//Mostrar quien gano
+if (puntosUsuario > puntosOrdenador){
+    alert("GANASTE :D \nPuntajes finales:")
+    alert(puntaje(puntosUsuario, puntosOrdenador))
+    alert("Gracias por jugar!!")
+} else if (puntosUsuario < puntosOrdenador){
+    alert("Mejor suerte la proxima :/ \nPuntajes finales: ")
+    alert(puntaje(puntosUsuario, puntosOrdenador))
+    alert("Gracias por jugar!!")
+} else if (puntosUsuario === puntosOrdenador){
+    alert("Empate :| \nPuntajes finales:")
+    alert(puntaje(puntosUsuario, puntosOrdenador))
+    alert("Gracias por jugar!!")
 }
 
-// Despedida del juego
-alert("Gracias por jugar!")
+
+
+
 
 
