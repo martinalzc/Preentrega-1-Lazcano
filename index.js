@@ -7,6 +7,7 @@ let partidaUser;
 let puntosOrdenador = 0;
 let puntosUsuario = 0;
 let punto;
+let i = 0
 
 
 // FUNCIONES
@@ -29,7 +30,7 @@ prompt('Juego "piedra, papel, tijeras"  \n Reglas: \n 1. El papel envuelve a la 
 
 // Estructura while, que mientras el jugador quiera continuar jugando se seguira repitiendo
 do{
-    partidaUser = prompt("Elije tu jugada: \n Piedra \n Papel \n Tijera")
+        partidaUser = prompt("Elije tu jugada: \n Piedra \n Papel \n Tijera")
 
 
     //Llamado a la funcion para que el ordenador elija su jugada de forma aleatoria
@@ -93,15 +94,9 @@ do{
 //Mostrar quien gano
 if (puntosUsuario > puntosOrdenador){
     alert("GANASTE :D \nGracais por jugar!!")
-    alert("Gracias por jugar!!")
 } else if (puntosUsuario < puntosOrdenador){
     alert("Mejor suerte la proxima :/ \nGracias por jugar!!")
 } else if (puntosUsuario === puntosOrdenador){
     alert("Empate :| \nGracias por jugar!!")
 }
-
-
-
-
-
 
