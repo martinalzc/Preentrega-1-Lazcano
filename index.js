@@ -38,7 +38,7 @@ do{
     
 
     //Sentencia switch para que el juego reaccione dependiendo de la jugada del usuario
-    switch (partidaUser){
+    switch (partidaUser.toLowerCase){
         case "piedra":
             if (partidaOrdenador === 0){
                 alert("Yo elegi piedra tambien!. Empate :)");
